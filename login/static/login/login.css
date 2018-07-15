@@ -1,0 +1,7 @@
+body {
+  background: url('texture.png') rgba(20, 20, 20, 0.8);
+  background-blend-mode: multiply;
+}
+.top-margin-fix {
+  margin-top: 100px;
+}

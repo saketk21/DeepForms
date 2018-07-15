@@ -1,0 +1,5 @@
+.back-img {
+  background: url('back.jpg') rgba(20, 20, 20, 0.7);
+  background-blend-mode: multiply;
+  background-size: cover 100vh;
+}

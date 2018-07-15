@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block appstaticfiles %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'login/index.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid back-img top-margin-fix py-5 text-center">
+	<div class="row">
+		<div class="col-md-12 text-white">
+			<h1 class="display-3 mb-4">DeepForms</h1>
+			{% if request.user.is_authenticated %}
+			<p class="lead mb-5 text-center">Direct Digitization of Exam Papers for WCE, Sangli.<br><br>Welcome, {{ request.user.username }}</p>
+			<a href="{% url 'exam:dashboard' %}" class="btn btn-lg btn-primary mx-1">Visit Dashboard</a>
+			{% else %}
+			<p class="lead mb-5 text-center">Direct Digitization of handwritten forms using Deep Learning<br><br>Please Login to continue.</p>
+			<a href="{% url 'login:login' %}" class="btn btn-lg btn-primary mx-1">Login</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+<div class="py-5 text-center bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" id="developers">
+				<h1>Meet the Developers</h1>
+				<p class="lead text-center">We strive to brighten someone's day</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 p-4">
+				{% load staticfiles %}
+				<img class="img-fluid d-block rounded-circle mx-auto" src="{% static 'vaibhav.jpg' %}" width="70%">
+				<p class="text-center"><b>Vaibhav Thombre</b>
+					<br>Machine Learning Engineer</p>
+			</div>
+			<div class="col-md-4 p-4">
+				<img class="img-fluid d-block rounded-circle mx-auto" src="{% static 'ajay.jpg' %}" width="70%">
+				<p class="text-center"><b>Ajay Kulkarni</b>
+					<br>Image Processing Engineer</p>
+			</div>
+			<div class="col-md-4 p-4">
+				<img class="img-fluid d-block rounded-circle mx-auto" src="{% static 'saket.jpg' %}" width="70%">
+				<p class="text-center"><b>Saket Kulkarni</b>
+					<br>A Bit of Everything Engineer</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="text-white bg-dark">
+	<div class="container">
+		<div class="row">
+			<div class="p-5 col-md-3">
+				<h3 class="mb-4">DeepForms</h3>
+				<ul class="list-unstyled">
+					<li><a class="white-text" href="{% url 'login:index' %}">Home</a></li>
+					<br>
+					<li><a class="white-text" href="{% url 'login:index' %}#developers">Meet the Developers</a></li>
+					<br>
+				</ul>
+			</div>
+			<div class="p-5 col-md-4">
+				<h3 class="mb-4">Our Motto</h3>
+				<p>If you can automate something, do it.<br><br>
+			</div>
+			<div class="p-5 col-md-5">
+				<h3 class="mb-5">We appreciate new business!</h3>
+				<div class="mb-5 col-12">
+					<p>Please Contact Us for Deep Learning Form Digitization of your Organization</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<p class="text-center">&copy; Copyright 2018-20 DeepForms. All rights reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}DeepForms{% endblock %}</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'base.css' %}">
+	{% block appstaticfiles %}{% endblock %}
+</head>
+<body>
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand text-primary" href="{% url 'login:index' %}">DeepForms</a>
+		<ul class="navbar-nav">
+			{% block navlinks %}
+			{% endblock %}
+		</ul>
+
+		<ul class="navbar-nav ml-auto">
+			{% if request.user.is_authenticated %}
+			<li class="nav-item">
+				<span class="navbar-text text-primary">Hello, {{request.user.username}} </span>
+				<a class="btn btn-outline-primary" href="{% url 'login:logout' %}">Log Out</a>
+			</li>
+			{% else %}
+			<li class="nav-item">
+				<a class="btn btn-outline-primary" href="{% url 'login:login' %}">Login</a>
+			</li>
+			{% endif %}
+		</ul>
+	</nav>
+
+	{% block content %}
+	{% endblock %}
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+	{% block scripts %}{% endblock %}
+</body>
+</html>

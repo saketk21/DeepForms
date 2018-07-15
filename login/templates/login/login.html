@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Login to DeepForms{% endblock %}
+{% block appstaticfiles %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'login/login.css' %}">
+{% endblock %}
+{% block content %}
+<div class="row mx-5 top-margin-fix">
+	<div class="col-md-4"></div>
+	<div class="col-md-4 card">
+		{% load staticfiles %}
+		<img  class="img-fluid " src="{% static 'login/back.jpg' %}">
+		<form class="card-body" method="post" action="{% url 'login:login' %}">
+			{% csrf_token %}
+			<h3 class="text-center">Login to DeepForms</h3>
+				<div class="form-row">
+					<div class="col-md-12">
+						<div class="form-group md-form">
+							<i class="fa fa-user prefix grey-text"></i>
+							<input type="text" id="username" name="username" required class="form-control">
+							<label for="username">Username</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-md-12">
+						<div class="form-group md-form">
+							<i class="fa fa-lock prefix grey-text"></i>
+							<input type="password" id="password" name="password" class="form-control">
+							<label for="password">Password</label>
+						</div>
+					</div>
+				</div>
+				{% if form.errors %}
+				<div class="form-group">
+        	<span style="color:red;">Incorrect Username or Password</span>
+				</div>
+
+	      {% endif %}
+				<button type="submit" class="btn btn-primary btn-block">Login</button>
+		</form>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+{% endblock %}

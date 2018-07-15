@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block appstaticfiles %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'exam/dashboard.css' %}">
+{% endblock %}
+
+{% block title %}DeepForms | Dashboard{% endblock %}
+{% block navlinks %}
+<li class="nav-item">
+	<a class="nav-link text-danger" href="{% url 'exam:dashboard' %}">Add Image for Recognition</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link text-danger" href="{% url 'exam:view_data' %}">View Data</a>
+</li>
+{% endblock %}
+{% block content %}
+<div class="container top-margin-fix d-flex justify-content-center align-items-center" id="main-container">
+	<div class="card px-5 pt-5 pb-5">
+		<h3>Submit Answer Book for Recognition</h3>
+		{% if error %}
+		<p class="text-danger">{{ error }}</p>
+		{% endif %}
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-group md-form">
+				<input type="number" required name="paperCode" id="paperCode" class="form-control">
+				<label for="paperCode">Paper Code</label>
+			</div>
+			<div class="form-group md-form">
+				<input type="text" required name="prn" id="prn" class="form-control">
+				<label for="prn">Student PRN</label>
+			</div>
+			<div class="form-group md-form">
+				<input type="text" required name="courseCode" id="courseCode" class="form-control">
+				<label for="courseCode">Course Code</label>
+			</div>
+			<label for="imageInput">Input Image</label>
+			<input type="file" required class="form-control-file" name="imageInput" id="imageInput">
+			<div class="text-center mt-4">
+				<input type="submit" value="Submit" class="btn btn-default">
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

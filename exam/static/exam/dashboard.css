@@ -1,0 +1,11 @@
+body {
+  background: url('back.jpg') rgba(20, 20, 20, 0.7);
+  background-blend-mode: multiply;
+  background-size: cover;
+}
+.top-margin-fix {
+  margin-top: 100px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.8);
+}

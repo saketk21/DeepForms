@@ -262,7 +262,7 @@ def preProcess(filePath):
     for i in range(len(final_contours)):
         # cv2.imwrite('contours/'+str(i)+'.jpg',cropContour(final_contours[i],img))
         cv2.imwrite('contours/'+str(i+1)+'.jpg',cropContour(final_contours[i],img))
-    # cv2.drawContours(img, final_contours, -1, (0,255,0), 1)
+    cv2.drawContours(img, final_contours, -1, (0,255,0), 1)
     # cv2.imshow("contours", img)
-    # cv2.imwrite("contour_image.jpg", img)
+    cv2.imwrite("contour_image.jpg", img)
 # preProcess('test4.jpg')
